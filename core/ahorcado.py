@@ -19,18 +19,31 @@ dificultad_baja = [
         "flor",
         "Parte de una planta que suele ser colorida y de la cual salen los frutos y semillas.",
     ],
+    ["dubi", "Arquero de la seleccion Argentina 2024 dicho con dislexia"],
 ]
-dificultad_media = {
-    "cirugia": "Intervención médica que implica operar el cuerpo para tratar enfermedades o lesione",
-    "naufragio": "Hundimiento o destrucción de una embarcación en el mar.",
-    "sinfonia": "Composición musical para orquesta, generalmente estructurada en varios movimientos y de carácter instrumental.",
-}
-dificultad_alta = {
-    "otorrinolaringologo": "Médico especializado en el diagnóstico y tratamiento de enfermedades relacionadas con el oído, la nariz y la garganta.",
-    "ornitorrinco": "Mamífero semiacuático agente.",
-    "hipopotomonstrosesquipedaliofobia": "El temor irracional a las palabras largas o complejas",
-}
+dificultad_media = [
+    [
+        "cirugia",
+        "Intervención médica que implica operar el cuerpo para tratar enfermedades o lesiones",
+    ],
+    ["naufragio", "Hundimiento o destrucción de una embarcación en el mar."],
+    [
+        "sinfonia",
+        "Composición musical para orquesta, generalmente estructurada en varios movimientos y de carácter instrumental.",
+    ],
+]
 
+dificultad_alta = [
+    [
+        "otorrinolaringologo",
+        "Médico especializado en el diagnóstico y tratamiento de enfermedades relacionadas con el oído, la nariz y la garganta.",
+    ],
+    ["ornitorrinco", "Mamífero semiacuático agente."],
+    [
+        "hipopotomonstrosesquipedaliofobia",
+        "El temor irracional a las palabras largas o complejas",
+    ],
+]
 abecedario = [
     "a",
     "b",
