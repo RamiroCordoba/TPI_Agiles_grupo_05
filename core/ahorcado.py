@@ -4,60 +4,60 @@ import random
 # Main
 dificultad_baja = [
     [
-        "Gato",
+        "gato",
         "Animal doméstico de cuatro patas, conocido por su agilidad y sus bigotes.",
     ],
     [
-        "Sol",
+        "sol",
         "Estrella luminosa que está en el centro del sistema solar y da luz y calor a la Tierra.",
     ],
     [
-        "Luna",
+        "luna",
         "Satélite natural de la Tierra que brilla en el cielo nocturno reflejando la luz del sol.",
     ],
     [
-        "Flor",
+        "flor",
         "Parte de una planta que suele ser colorida y de la cual salen los frutos y semillas.",
     ],
 ]
 dificultad_media = {
-    "Cirugía": "Intervención médica que implica operar el cuerpo para tratar enfermedades o lesione",
-    "Naufragio": "Hundimiento o destrucción de una embarcación en el mar.",
-    "Sinfonía": "Composición musical para orquesta, generalmente estructurada en varios movimientos y de carácter instrumental.",
+    "cirugia": "Intervención médica que implica operar el cuerpo para tratar enfermedades o lesione",
+    "naufragio": "Hundimiento o destrucción de una embarcación en el mar.",
+    "sinfonia": "Composición musical para orquesta, generalmente estructurada en varios movimientos y de carácter instrumental.",
 }
 dificultad_alta = {
-    "Otorrinolaringólogo": "Médico especializado en el diagnóstico y tratamiento de enfermedades relacionadas con el oído, la nariz y la garganta.",
-    "Ornitorrinco": "Mamífero semiacuático agente.",
+    "otorrinolaringologo": "Médico especializado en el diagnóstico y tratamiento de enfermedades relacionadas con el oído, la nariz y la garganta.",
+    "ornitorrinco": "Mamífero semiacuático agente.",
     "hipopotomonstrosesquipedaliofobia": "El temor irracional a las palabras largas o complejas",
 }
 
 abecedario = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
 ]
 
 
@@ -128,10 +128,26 @@ class Ahorcado:
         self.letras_arriesgada = []
         if palabra is None:
             self.palabra_a_adivinar = self.generar_palabra(nivel_dificultad)
-            self.palabra_a_mostrar = self.rayas_para_palabra(self.palabra_a_adivinar[0])
         else:
             self.palabra_a_adivinar[0] = palabra
-            self.palabra_a_mostrar = self.rayas_para_palabra(palabra)
-        self.pista = ""
+            self.palabra_a_mostrar = ["_" for _ in self.palabra_a_adivinar[0]]
+        self.pista = self.palabra_a_adivinar[1]
         self.dificultad = nivel_dificultad
         self.vidas_restantes = 5
+
+    def letras_arriesgadas_en_el_juego(self, letra):
+        if letra in self.letras_arriesgada:
+            return True
+        else:
+            return False
+
+    def generar_palabra(self, dificultad):
+        if dificultad == "facil":
+            return random.choice(dificultad_baja)
+        elif dificultad == "media":
+            return random.choice(dificultad_media)
+        else:
+            return random.choice(dificultad_alta)
+
+    def dame_una_pista(self):
+        return self.pista
