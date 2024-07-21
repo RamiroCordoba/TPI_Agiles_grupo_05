@@ -1,0 +1,252 @@
+
+body {
+    font-family: 'Playwright BE VLG', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+    
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+
+#palabra {
+    font-size: 2em;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    margin-bottom: 1em;
+}
+
+
+#intentos {
+    font-size: 1.1em;
+    margin-bottom: 1em;
+    color: #d9534f; 
+}
+
+
+#letras_usadas {
+    font-size: 1.1em;
+    margin-bottom: 1em;
+}
+
+
+#pista {
+    font-style: italic;
+    margin-bottom: 1em;
+    color: #5bc0de;
+}
+
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    width: 80px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #094293;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #073070;
+}
+
+button[disabled] {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+
+#nuevo_juego {
+    margin-top: 20px;
+    padding: 10px 30px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #094293; 
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#nuevo_juego:hover {
+    background-color: #073070; 
+}
+
+
+.difficulty-selection {
+    margin-bottom: 20px;
+}
+
+.difficulty-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.difficulty-button.facil {
+    background-color: #094293; 
+}
+
+.difficulty-button.media {
+    background-color: #094293; 
+}
+
+.difficulty-button.dificil {
+    background-color: #094293; 
+}
+
+.difficulty-button:hover {
+    opacity: 0.9;
+}
+
+
+footer {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #888;
+}
+
+form {
+    margin-top: 1em;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: inline-block;
+}
+
+@media (max-width: 600px) {
+    body {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .container {
+        width: 90%;
+        padding: 10px;
+    }
+    
+    input[type="text"] {
+        width: 60px;
+    }
+    
+    button, .difficulty-button {
+        font-size: 0.9em;
+        padding: 10px 15px;
+    }
+    
+    #palabra {
+        font-size: 1.5em;
+    }
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.head, .body, .left-arm, .right-arm, .left-leg, .right-leg {
+    animation: fadeIn 0.5s ease-in-out;
+    opacity: 0;
+}
+
+.intentos-6 .head {
+    display: block;
+    opacity: 1;
+}
+
+.intentos-5 .body {
+    display: block;
+    opacity: 1;
+}
+
+.intentos-4 .left-arm {
+    display: block;
+    opacity: 1;
+}
+
+.intentos-3 .right-arm {
+    display: block;
+    opacity: 1;
+}
+
+.intentos-2 .left-leg {
+    display: block;
+    opacity: 1;
+}
+
+.intentos-1 .right-leg {
+    display: block;
+    opacity: 1;
+}
+
+}
+.container {
+    display: flex;
+    align-items: flex-start; 
+    justify-content: space-between; 
+}
+
+.content {
+    flex: 1; 
+    margin-right: 20px; 
+}
+
+.image-container {
+    width: 200px; 
+}
+
+.image-container img {
+    width: 100%; 
+    height: auto; 
+}

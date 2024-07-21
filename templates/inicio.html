@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ahorcado</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon-32x32.png') }}" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+            <div class="container">
+            <h1>Elige la Dificultad</h1>
+        </div>
+        <div class="container">
+            <form action="{{ url_for('iniciar_juego', nivel='facil') }}">
+                <button type="submit">Fácil</button>
+            </form>
+            <form action="{{ url_for('iniciar_juego', nivel='media') }}">
+                <button type="submit">Media</button>
+            </form>
+            <form action="{{ url_for('iniciar_juego', nivel='dificil') }}">
+                <button type="submit">Difícil</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

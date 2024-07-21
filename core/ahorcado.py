@@ -86,6 +86,8 @@ class Ahorcado:
         self.partida_concluida = False
         self.dificultad = ""
         self.pista = ""
+        self.img = ""
+        self.long = 0
 
     def rayas_para_palabra(self, la_palabra):
         rayas = len(la_palabra)
@@ -93,8 +95,8 @@ class Ahorcado:
         return self.palabra_vacia.strip()
 
     def letra_pertenece_palabra(self, letra):
-        if letra in self.palabra_a_adivinar:
-            self.letras_adivinadas += letra
+        if letra in self.palabra_a_adivinar[0]:
+            self.letras_adivinadas.append(letra) 
             return True
         else:
             return False
@@ -103,22 +105,26 @@ class Ahorcado:
         return self.palabra_a_adivinar == palabra
 
     def intento(self, letra):
+        if letra in self.letras_arriesgada:
+            return False
         self.letras_arriesgada.append(letra)
-        print(letra)
+
         if self.letra_pertenece_palabra(letra):
             self.mostrar_letra_correcta(letra)
             return True
         else:
             self.vidas_restantes -= 1
+            self.img=("static\img\ " +  str(self.vidas_restantes) + ".png").replace(" ","")
+            self.fin_juego()
             return False
 
     def mostrar_letra_correcta(self, letra):
-        letras_adivinadas = ""
-        for l in self.palabra_a_adivinar:
+        letras_adivinadas = []
+        for l in self.palabra_a_adivinar[0]:
             if l == letra or l in self.letras_arriesgada:
-                letras_adivinadas += l
+                letras_adivinadas.append(l)
             else:
-                letras_adivinadas += "_"
+                letras_adivinadas.append("_")
         self.palabra_a_mostrar = letras_adivinadas
 
     def letras_usadas(self, letra):
@@ -127,26 +133,27 @@ class Ahorcado:
         else:
             return False
 
-    def se_termino_el_juego(self):
-        if self.vidas_restantes == 0 or (
-            "".join(self.palabra_a_mostrar) == self.palabra_a_adivinar
-        ):
+    def se_termino_el_juego(self): 
+        if self.vidas_restantes == 0 or ("".join(self.palabra_a_mostrar) == self.palabra_a_adivinar[0]):
             self.partida_concluida = True
+            self.fin_juego()
         return self.partida_concluida
 
     def iniciar_juego(self, nivel_dificultad=None, palabra=None):
         self.vidas = 5
         self.letras_adivinadas = []
-        self.se_termino_el_juego = False
+        self.partida_concluida = False
         self.letras_arriesgada = []
+        self.vidas_restantes = 5
+        self.fin_juego()
         if palabra is None:
             self.palabra_a_adivinar = self.generar_palabra(nivel_dificultad)
         else:
             self.palabra_a_adivinar[0] = palabra
-            self.palabra_a_mostrar = ["_" for _ in self.palabra_a_adivinar[0]]
+        self.long = len(self.palabra_a_adivinar[0])
+        self.palabra_a_mostrar = ["_" for _ in self.palabra_a_adivinar[0]]
         self.pista = self.palabra_a_adivinar[1]
-        self.dificultad = nivel_dificultad
-        self.vidas_restantes = 5
+        
 
     def letras_arriesgadas_en_el_juego(self, letra):
         if letra in self.letras_arriesgada:
@@ -164,3 +171,26 @@ class Ahorcado:
 
     def dame_una_pista(self):
         return self.pista
+
+    def fin_juego(self):
+        if self.partida_concluida:
+            if self.vidas_restantes == 0:
+                url = 'static\img\0.png'
+                self.img = url.replace(" ","")
+            else:
+                url = 'static\img\Winner.jpg'
+                self.img = url.replace(" ","")
+        else:
+            self.img=("static\img\ " +  str(self.vidas_restantes) + ".png").replace(" ","")
+
+    def intentoP(self,palabraA):
+        self.partida_concluida = True
+        self.palabra_vacia = str(palabraA)
+        if not ("".join(palabraA) == self.palabra_a_adivinar[0]):
+            self.vidas_restantes = 0
+            self.letras_adivinadas = palabraA
+            print(self.letras_adivinadas)
+
+    
+    def reiniciar_juego(self):
+        self.iniciar_juego() 
