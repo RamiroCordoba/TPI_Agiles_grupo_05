@@ -1,23 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Ahorcado</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='img/favicon-32x32.png') }}" type="image/x-icon">
-</head>
-<body>
-    <div class="container">
-        <div class="container">
-            <h1>Ingrese nombre</h1>
-        </div>
-        <div class="container">
-            <form action="{{ url_for('guardar_nombre') }}" method="post">
-                <label for="nombre">Introduce tu nombre:</label>
-                <input type="text" id="nombre" name="nombre" maxlength="20" required pattern="^[a-zA-Z]+$" title="Por favor, introduce solo una palabra">
-                <button type="submit">Siguiente</button>
-            </form>
-        </div>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='img/favicon-32x32.png') }}"
+      type="image/x-icon"
+    />
+    <!-- Fuente de la pagina -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+    />
+  </head>
+  <body>
+    <div class="containerhome">
+      <div>
+        <h1>Ingrese nombre</h1>
+      </div>
+      <hr class="barra-horizontal" />
+      <div class="buttombox">
+        <form action="{{ url_for('guardar_nombre') }}" method="post">
+          <label for="nombre" class="white-text">Introduce tu nombre: </label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            maxlength="20"
+            required
+            pattern="^[a-zA-Z]+$"
+            title="Por favor, introduce solo una palabra"
+          />
+          <button type="submit">Siguiente</button>
+        </form>
+      </div>
     </div>
-</body>
+  </body>
 </html>
