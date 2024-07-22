@@ -1,2 +1,5 @@
-Trabajo Practico Final de Metodologias Agiles 2024
-Alumnos: Ramiro Cordoba y Alexis Tomas
+[![codecov](https://codecov.io/gh/RamiroCordoba/TPI_Agiles_grupo_05/graph/badge.svg?token=ODZ4D9W8J3)](https://codecov.io/gh/RamiroCordoba/TPI_Agiles_grupo_05)
+<h1>Trabajo Practico Final de Metodologias Agiles 2024</h1>
+<b>Alumnos: </b>
+<li>Ramiro Cordoba</li>
+<li>Alexis Tomas</li>
