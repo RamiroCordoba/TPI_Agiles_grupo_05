@@ -19,7 +19,11 @@ jobs:
         run: |
           coverage run -m pytest
           coverage report
+          coverage xml  # Genera un reporte en formato XML
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage.xml
+          flags: unittests
+          name: codecov-umbrella
