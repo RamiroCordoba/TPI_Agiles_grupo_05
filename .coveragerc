@@ -6,3 +6,4 @@ source = .
 omit = 
     tests/*
     core/ahorcadoapp.py
+    features/*
