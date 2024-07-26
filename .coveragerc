@@ -7,7 +7,6 @@ exclude_lines =
     pragma: no cover
 
 omit =
-    tests/*
     core/ahorcadoapp.py
 
 [paths]

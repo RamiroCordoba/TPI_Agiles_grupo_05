@@ -2,6 +2,7 @@
 import random
 from dotenv import load_dotenv, find_dotenv
 import os
+
 # Main
 dificultad_baja = [
     [
@@ -46,9 +47,11 @@ dificultad_alta = [
     ],
 ]
 
+
 def cargar_env():
     load_dotenv(find_dotenv())
-    return os.getenv('Entorno')
+    return os.getenv("Entorno")
+
 
 class Ahorcado:
     def __init__(self):
@@ -66,7 +69,6 @@ class Ahorcado:
         self.long = 0
         self.pruebaenv = cargar_env()
         print(f"Valor de Entorno en el backend: {self.pruebaenv}")
-    
 
     def rayas_para_palabra(self, la_palabra):
         rayas = len(la_palabra)
@@ -75,7 +77,7 @@ class Ahorcado:
 
     def letra_pertenece_palabra(self, letra):
         if letra in self.palabra_a_adivinar[0]:
-            self.letras_adivinadas.append(letra) 
+            self.letras_adivinadas.append(letra)
             return True
         else:
             return False
@@ -93,7 +95,9 @@ class Ahorcado:
             return True
         else:
             self.vidas_restantes -= 1
-            self.img=("static\img\ " +  str(self.vidas_restantes) + ".png").replace(" ","")
+            self.img = ("static\img\ " + str(self.vidas_restantes) + ".png").replace(
+                " ", ""
+            )
             self.fin_juego()
             return False
 
@@ -112,13 +116,15 @@ class Ahorcado:
         else:
             return False
 
-    def se_termino_el_juego(self): 
-        if self.vidas_restantes == 0 or ("".join(self.palabra_a_mostrar) == self.palabra_a_adivinar[0]):
+    def se_termino_el_juego(self):
+        if self.vidas_restantes == 0 or (
+            "".join(self.palabra_a_mostrar) == self.palabra_a_adivinar[0]
+        ):
             self.partida_concluida = True
             self.fin_juego()
         return self.partida_concluida
 
-    def iniciar_juego(self, nivel_dificultad=None, palabra=None,pista=None):
+    def iniciar_juego(self, nivel_dificultad=None, palabra=None, pista=None):
         self.vidas = 5
         self.letras_adivinadas = []
         self.partida_concluida = False
@@ -135,14 +141,13 @@ class Ahorcado:
             self.pista = pista
         else:
             self.pista = self.palabra_a_adivinar[1]
-        
 
     def letras_arriesgadas_en_el_juego(self, letra):
         if letra in self.letras_arriesgada:
             return True
         else:
             return False
-        
+
     def generar_palabra(self, dificultad):
         if dificultad == "facil":
             return random.choice(dificultad_baja)
@@ -151,20 +156,19 @@ class Ahorcado:
         else:
             return random.choice(dificultad_alta)
 
-
     def dame_una_pista(self):
         return self.pista
 
     def fin_juego(self):
         if self.partida_concluida:
             if self.vidas_restantes == 0:
-                url = 'img/0.png'
-                self.img = url.replace(" ","")
+                url = "img/0.png"
+                self.img = url.replace(" ", "")
             else:
-                url = 'img/Winner.jpg'
-                self.img = url.replace(" ","")
+                url = "img/Winner.jpg"
+                self.img = url.replace(" ", "")
         else:
-            self.img=("img/ " +  str(self.vidas_restantes) + ".png").replace(" ","")
+            self.img = ("img/ " + str(self.vidas_restantes) + ".png").replace(" ", "")
 
     def intentoP(self, palabraA):
         self.partida_concluida = True
@@ -174,8 +178,8 @@ class Ahorcado:
         else:
             self.vidas_restantes = 0
             self.palabra_a_mostrar = list(palabraA)
+
     """        print(self.palabra_a_mostrar)"""
 
-    
     def reiniciar_juego(self):
-        self.iniciar_juego() 
+        self.iniciar_juego()

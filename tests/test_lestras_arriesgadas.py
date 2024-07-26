@@ -68,3 +68,10 @@ def test_mostrar_letra_correcta_con_letra_repetida():
     juego.letras_arriesgada = ["m"]
     juego.mostrar_letra_correcta("m")
     assert juego.palabra_a_mostrar == ["m", "_", "m", "_"]
+
+
+def test_intento_letra_repetida():
+    ahorcado = Ahorcado()
+    ahorcado.letras_arriesgada = ["a"]
+    resultado = ahorcado.intento("a")
+    assert resultado == False
