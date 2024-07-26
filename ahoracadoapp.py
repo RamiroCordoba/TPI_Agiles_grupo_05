@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from core.ahorcado import Ahorcado
-
-
 app = Flask(__name__)
 app.secret_key = 'your_secret_key' 
 
@@ -27,15 +25,19 @@ def elegir_dificultad():
 @app.route('/inicio/<nivel>')
 def iniciar_juego(nivel):
     if 'nombre' not in session:
-        return redirect(url_for('ingresar_nombre'))  
+        return redirect(url_for('ingresar_nombre'))
     ahorcado.iniciar_juego(nivel_dificultad=nivel)
     return redirect(url_for('inicio'))
 
-@app.route('/inicio')
+@app.route('/inicio/')
 def inicio():
+    pala = request.args.get('palabra')
+    pista = request.args.get('pista')
+    nivel = request.args.get('nivel')
     if 'nombre' not in session:
         return redirect(url_for('ingresar_nombre'))  
-    print(ahorcado.palabra_vacia)
+    if pala and pista:
+        ahorcado.iniciar_juego(nivel_dificultad=nivel,palabra=pala,pista=pista)
     return render_template(
         'juego.html',
         palabra_a_mostrar=" ".join(ahorcado.palabra_a_mostrar),
@@ -76,6 +78,5 @@ def reiniciar():
     ahorcado.reiniciar_juego()
     return redirect(url_for('elegir_dificultad'))  
 
-
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True, use_reloader=True)
