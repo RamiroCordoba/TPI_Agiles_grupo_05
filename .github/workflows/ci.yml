@@ -14,7 +14,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pytest coverage pytest-cov behave python-dotenv
+          pip install pytest coverage pytest-cov behave python-dotenv selenium
       - name: Run tests with coverage
         run: |
           coverage run -m pytest
