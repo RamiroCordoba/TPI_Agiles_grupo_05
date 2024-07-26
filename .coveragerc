@@ -3,7 +3,18 @@ branch = True
 source = .
 
 [report]
-omit = 
+exclude_lines =
+    pragma: no cover
+
+omit =
     tests/*
     core/ahorcadoapp.py
-    features/*
+
+[paths]
+source =
+    .
+    */site-packages/
+
+[coverage:report]
+omit =
+    features/steps/test_steps.py
