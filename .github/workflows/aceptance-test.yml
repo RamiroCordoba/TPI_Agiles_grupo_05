@@ -40,7 +40,12 @@ jobs:
         run: |
           python -c "import chromedriver_autoinstaller; chromedriver_autoinstaller.install()"
 
-      - name: Run Chrome headless
+      - name: Run tests
+        env:
+          DISPLAY: :99
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          DEBUG: ${{ secrets.DEBUG }}
         run: |
           google-chrome --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 --disable-dev-shm-usage &
-          sleep 10 # Give Chr
+          behave
