@@ -44,5 +44,5 @@ jobs:
         env:
           DISPLAY: :99
         run: |
-          google-chrome --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 &
+          google-chrome --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 --disable-dev-shm-usage &
           behave
