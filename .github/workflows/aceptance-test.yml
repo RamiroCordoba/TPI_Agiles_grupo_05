@@ -29,14 +29,22 @@ jobs:
 
       - name: Verify Chrome installation
         run: |
+          echo "Checking PATH..."
+          echo $PATH
+          echo "Checking google-chrome location..."
           which google-chrome
+          echo "Checking google-chrome version..."
           google-chrome --version
 
       - name: Download ChromeDriver
         run: |
+          echo "Obtaining Chrome version..."
           CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
+          echo "Chrome version is $CHROME_VERSION"
           MAJOR_VERSION=$(echo $CHROME_VERSION | cut -d '.' -f 1)
+          echo "Major version is $MAJOR_VERSION"
           LATEST_DRIVER=$(wget -qO- "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$MAJOR_VERSION")
+          echo "Latest driver version is $LATEST_DRIVER"
           wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$LATEST_DRIVER/chromedriver_linux64.zip
           unzip /tmp/chromedriver.zip -d /tmp
           sudo mv /tmp/chromedriver /usr/local/bin/chromedriver
