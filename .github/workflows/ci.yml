@@ -29,5 +29,18 @@ jobs:
           flags: unittests
           name: codecov-umbrella
 
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
+      - name: Install ChromeDriver
+        run: |
+          sudo apt-get install -y chromedriver
+          sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
+
       - name: Run Acceptance Tests
-        run: behave
+        env:
+          PATH: /usr/bin/google-chrome:$PATH
+        run: |
+          behave
