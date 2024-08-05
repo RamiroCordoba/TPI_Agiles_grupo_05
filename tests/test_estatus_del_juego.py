@@ -17,7 +17,7 @@ def test_juego_terminado_con_ganador():
     juego.intento("a")
     juego.intento("t")
     juego.intento("o")
-    assert juego.se_termino_el_juego() == False#True
+    assert juego.se_termino_el_juego() == True
 
 
 def test_juego_terminado_con_perdedor():
