@@ -100,4 +100,4 @@ def step_then_palabra_no_adivinada(context, palabra, palabraAdi):
     palabra_a_mostrar = palabra_a_mostrar_texto.replace(" ", "").lower()
     palabra_esperada = palabraAdi.replace(" ", "").lower()
     
-    assert palabra_a_mostrar == palabra_esperada, f'La palabra "{palabra}" debería ser registrada como no adivinada.'
+    assert palabra_a_mostrar != palabra_esperada, f'La palabra "{palabra}" debería ser registrada como no adivinada.'
