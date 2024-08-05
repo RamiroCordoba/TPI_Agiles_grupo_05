@@ -44,7 +44,7 @@ jobs:
         run: |
           export FLASK_APP=ahorcadoapp.py
           flask run &
-          sleep 5 # Give Flask a moment to start
+          sleep 10 # Give Flask a moment to start
 
       - name: Run acceptance tests
         run: |
