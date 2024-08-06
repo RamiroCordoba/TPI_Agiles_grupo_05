@@ -49,7 +49,6 @@ def step_when_selecciono_dificultad_y_juego_se_genera(context, dificultad, palab
     time.sleep(1)
     assert "inicio" in context.browser.current_url
 
-
 @then('debo ser redirigido a la página de juego')
 def step_then_redirigido_a_pagina_de_juego(context):
     time.sleep(1)
@@ -75,9 +74,6 @@ def step_then_letra_registrada(context, letra):
     letras_usadas_texto = letras_usadas_texto.replace("Letras usadas: ", "")
     assert letra in letras_usadas_texto, f'La letra {letra} no está registrada como usada.'
 
-
-
-
 @when('arriesgo la palabra "{palabra}"')
 def step_when_arriesgo_palabra(context, palabra):
     wait = WebDriverWait(context.browser, 10)
@@ -86,7 +82,6 @@ def step_when_arriesgo_palabra(context, palabra):
     boton_enviar = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[text()='Arriesgar Palabra']")))
     boton_enviar.click()
     time.sleep(1)
-
 
 @then('la palabra "{palabra}" debería ser registrada como adivinada')
 def step_then_palabra_adivinada(context, palabra):
