@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.options import Options
 import chromedriver_autoinstaller
 
 def before_all(context):
-    chromedriver_autoinstaller.install(path='features\steps\chromedriver.exe')
+    chromedriver_autoinstaller.install()
     
     chrome_options = Options()
     #chrome_options.add_argument("--headless")
