@@ -1,8 +1,11 @@
-from behave import given, when, then
+from behave import *
 from selenium.webdriver.common.by import By
 import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+
+
 
 @given('que estoy en la página de ingreso de nombre')
 def step_given_en_pagina_ingreso_nombre(context):
