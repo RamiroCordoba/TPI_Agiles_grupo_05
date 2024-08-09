@@ -66,8 +66,9 @@ def step_when_selecciono_dificultad_y_juego_se_genera(
     time.sleep(1)
 
     context.browser.get(
-        f"http://127.0.0.1:5000/inicio/?{dificultad}&palabra={palabra}&pista={pista}"
+        f"{BASE_URL}/inicio/?{dificultad}&palabra={palabra}&pista={pista}"
     )
+
     time.sleep(1)
     assert "inicio" in context.browser.current_url
 
