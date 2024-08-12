@@ -42,7 +42,7 @@ jobs:
 
       - name: Run Flask app with Gunicorn
         run: |
-          gunicorn -w 4 -b 0.0.0.0:8000 ahorcado:app &
+          gunicorn -w 4 -b 0.0.0.0:8000 ahorcadoapp:app &
           sleep 10 # Give Gunicorn a moment to start
 
       - name: Run acceptance tests
