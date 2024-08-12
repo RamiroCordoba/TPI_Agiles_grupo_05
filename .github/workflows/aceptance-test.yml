@@ -51,12 +51,3 @@ jobs:
           Xvfb :99 -screen 0 1920x1080x24 &
           export DISPLAY=:99
           behave --tags=your-tag --define base_url=https://tpi-agiles-grupo-05.onrender.com
-
-      - name: Trigger Deploy on Render
-        if: success() # Solo ejecuta este paso si los tests son exitosos
-        run: |
-          curl -X POST \
-          -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY}}" \
-          https://api.render.com/v1/services/srv-cqi7pj6ehbks73bpgj1g/deploys
-        env:
-          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY}}
