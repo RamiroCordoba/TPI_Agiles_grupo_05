@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install flask behave Flask-Testing selenium chromedriver-autoinstaller python-dotenv
+          pip install flask behave Flask-Testing selenium chromedriver-autoinstaller python-dotenv gunicorn
 
       - name: Add Chrome repository and install Chrome
         run: |
@@ -40,11 +40,10 @@ jobs:
         run: |
           python -c "import chromedriver_autoinstaller; chromedriver_autoinstaller.install()"
 
-      - name: Run Flask app
+      - name: Run Flask app with Gunicorn
         run: |
-          export FLASK_APP=ahoracadoapp.py
-          flask run &
-          sleep 10 # Give Flask a moment to start
+          gunicorn -w 4 -b 0.0.0.0:8000 ahorcado:app &
+          sleep 10 # Give Gunicorn a moment to start
 
       - name: Run acceptance tests
         run: |
