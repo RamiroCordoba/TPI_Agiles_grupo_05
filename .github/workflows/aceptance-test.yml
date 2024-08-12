@@ -42,7 +42,7 @@ jobs:
 
       - name: Run Flask app
         run: |
-          export FLASK_APP=ahorcadoapp.py
+          export FLASK_APP=ahoracadoapp.py
           flask run &
           sleep 10 # Give Flask a moment to start
 
