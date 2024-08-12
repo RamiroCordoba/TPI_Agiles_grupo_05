@@ -85,7 +85,7 @@ def step_when_arriesgo_letra(context, letra):
     input_letra.send_keys(letra)
     wait = WebDriverWait(context.browser, 10)
     boton_enviar = wait.until(
-        EC.element_to_be_clickable((By.XPATH, "//button[text()='Arriesgar letra']"))
+        EC.element_to_be_clickable((By.XPATH, "//button[text()='Arriesgar Letra']"))
     )
     boton_enviar.click()
     time.sleep(1)
