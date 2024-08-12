@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from core.ahorcado import Ahorcado
 
 app = Flask(__name__)
-app.secret_key = "your_secret_key"
+# app.secret_key = "your_secret_key"
 
 # Crear una instancia del juego
 ahorcado = Ahorcado()
