@@ -4,7 +4,7 @@ from core.ahorcado import Ahorcado
 app = Flask(__name__)
 app.secret_key = "your_secret_key"
 
-# Crear una instancia del juego
+# Crear una instancia del juego-
 ahorcado = Ahorcado()
 
 
