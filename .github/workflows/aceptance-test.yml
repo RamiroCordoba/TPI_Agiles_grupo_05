@@ -30,24 +30,22 @@ jobs:
 
       - name: Verify Chrome installation
         run: |
-          echo "Checking PATH..."
-          echo $PATH
-          echo "Checking google-chrome location..."
           which google-chrome
-          echo "Checking google-chrome version..."
           google-chrome --version
 
       - name: Install ChromeDriver using chromedriver-autoinstaller
         run: |
           python -c "import chromedriver_autoinstaller; chromedriver_autoinstaller.install()"
+          which chromedriver
+          chromedriver --version
 
       - name: Run Flask app with Gunicorn
         run: |
           gunicorn -w 4 -b 0.0.0.0:8000 ahoracadoapp:app &
-          sleep 10 # Give Gunicorn a moment to start
+          sleep 15 # Aumentar el tiempo de espera
 
       - name: Run acceptance tests
         run: |
           Xvfb :99 -screen 0 1920x1080x24 &
           export DISPLAY=:99
-          behave --tags=your-tag --define base_url=https://tpi-agiles-grupo-05.onrender.com
+          behave --define base_url=http://0.0.0.0:8000 -v
